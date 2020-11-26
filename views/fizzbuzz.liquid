@@ -1,20 +1,24 @@
 {% for i in (1..num) %}
 
     {% assign output = '' %}
+
+    {% comment %} Checks if the loop index is a multiple of three, if so add `Fizz` to `output` {% endcomment %}
     {% assign is_fizz = forloop.index | modulo:3 %}
     {% if is_fizz == 0 %}
         {% assign output = output | append: "Fizz" %}
     {% endif %}
 
+    {% comment %} Checks if the loop index is a multiple of five, if so add `Buzz` to `output` {% endcomment %}
     {% assign is_buzz = forloop.index | modulo:5 %}
     {% if is_buzz == 0 %}
         {% assign output = output | append: "Buzz" %}
     {% endif %}
 
+    {% comment %} If `output` is set then print it, else print current loop index {% endcomment %}
     {% if output != '' %}
         {{output}}
     {% else %}
         {{forloop.index}}
     {% endif %}
-    
+
 {% endfor %}
