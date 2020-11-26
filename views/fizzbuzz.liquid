@@ -1,0 +1,20 @@
+{% for i in (1..num) %}
+
+    {% assign output = '' %}
+    {% assign is_fizz = forloop.index | modulo:3 %}
+    {% if is_fizz == 0 %}
+        {% assign output = output | append: "Fizz" %}
+    {% endif %}
+
+    {% assign is_buzz = forloop.index | modulo:5 %}
+    {% if is_buzz == 0 %}
+        {% assign output = output | append: "Buzz" %}
+    {% endif %}
+
+    {% if output != '' %}
+        {{output}}
+    {% else %}
+        {{forloop.index}}
+    {% endif %}
+    
+{% endfor %}

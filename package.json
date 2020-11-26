@@ -5,5 +5,7 @@
   "main": "index.js",
   "author": "Cameron Bartlett",
   "license": "MIT",
-  "type": "module"
+  "dependencies": {
+    "liquidjs": "^9.16.1"
+  }
 }

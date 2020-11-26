@@ -1,29 +1,13 @@
-const fizzbuzz = (num = 100) => {
+const path = require('path');
+const { Liquid } = require('liquidjs');
 
-    for(let i = 1; i <= num; i++){
-
-        let output = '';
-
-        if ( i % 3 == 0 ){
-            output = output + 'Fizz';
-        }
-        if ( i % 5 == 0){
-            output = output + 'Buzz';
-        }
-        if ( output == '' ){
-            output = i;
-        }
-
-        console.log(output);
-
-    }
-
-}
+var engine = new Liquid({
+    root: path.resolve(__dirname, 'views/'),
+    extname: '.liquid' 
+});
 
 const arg = process.argv[2];
 
-if (arg) {
-    fizzbuzz(arg);
-} else {
-    fizzbuzz();
-}
+engine
+    .renderFile("fizzbuzz", {num: (arg)?arg:100})
+    .then(console.log)
